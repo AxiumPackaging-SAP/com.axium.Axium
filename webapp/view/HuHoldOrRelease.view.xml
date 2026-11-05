@@ -1,0 +1,88 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.axium.Axium.controller.HuHoldOrRelease"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page id="idHuPage" showNavButton="true" showHeader="true" navButtonPress="onPressBack" class="sapUiContentPadding">
+				<content>
+					<Label design="Bold" text=" Reason" class="sapUiSmallMarginTop" required="true" width="20%"></Label>
+					<!--					<Input value="" placeholder="Enter Reason" id="idcommt" textAlign="Left" />-->
+					<ComboBox id="idcommt" filterSecondaryValues="true" showSecondaryValues="true" placeholder="Select Reason" loadItems="ReasonLoad"
+						width="80%"></ComboBox>
+					<Label design="Bold" text=" HU No." class="sapUiSmallMarginTop" width="20%"></Label>
+					<Input value="" placeholder="Scan HU Number" id="idHUNum_1" liveChange="onHandleHU" textAlign="Left" width="80%"/>
+					<Label design="Bold" text=" Batch No." class="sapUiSmallMarginTop" width="20%"></Label>
+					<Input value="" placeholder="Scan Batch Number" id="idbatch" liveChange="onHandleBatch" textAlign="Left" width="80%"/>
+					<!--	<Button text="HU List" id="ADDHU" type="Accept" icon="sap-icon://add-activity-2" press="onHandleHU"/>
+						<Button icon="sap-icon://multiselect-all" press="selectAll" type="Accept"></Button> liveChange="onHandleHU"
+					<Button class="sapUiLargeMarginBegin" icon="sap-icon://multiselect-none" press="removeAll"></Button>-->
+					<BusyIndicator visible="false" text="Saving the data..." class="sapUiTinyMarginBottom" id="bsyInd"/>
+					<List items="{huDetails>/HuList}" headerText="HU Details" mode="MultiSelect" inset="false" id="idList">
+						<items>
+							<ObjectListItem title="{huDetails>HU}" id="idHuList">
+								<attributes>
+									<ObjectAttribute title="Material" text="{huDetails>Material}"/>
+									<ObjectAttribute title="Material Description" text="{huDetails>MaterialDesc}"/>
+									<ObjectAttribute title="Plant" text="{huDetails>Plant}"/>
+									<ObjectAttribute title="Storage Location" text="{huDetails>StorageLocation}"/>
+									<ObjectAttribute title="Batch Number" text="{huDetails>BatchNo}"/>
+									<ObjectAttribute title="Comment" text="{huDetails>Comment}"/>
+									<ObjectAttribute title="Status" text="{huDetails>StatusMessage}"/>
+								</attributes>
+							</ObjectListItem>
+						</items>
+					</List>
+					<!--<ScrollContainer id="oScroll" height="500px" vertical="true" focusable="true">-->
+					<!--	<Table id="idBList" inset="false" items="{}"   mode="MultiToggle" styleclass="sapUiSizeCompact">-->
+					<!--<Table id="idList" inset="false" items="{huDetails>/results}" contextualWidth="Auto" popinLayout="GridSmall" mode="MultiSelect">
+							<columns>
+								<Column >
+									<Text text="HU No."/>
+								</Column>
+								<Column >
+									<Text text="Material"/></Column>
+								<Column >
+									<Text text="Material Desc."/></Column>
+								<Column >
+									<Text text="Plant"/></Column>
+								<Column >
+									<Text text="Storage Loc."/>
+								</Column>
+								<Column>
+									<Text text="Batch No."/>
+								</Column>
+								<Column >
+									<Text text="Comment"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Label text="{huDetails>HU}"/>
+										<Label text="{huDetails>Material}"/>
+										<Label text="{huDetails>MaterialDesc}"/>
+										<Label text="{huDetails>Plant}"/>
+										<Label text="{huDetails>StorageLocation}"/>
+										<Label text="{huDetails>BatchNo}"/>
+										<Label text="{huDetails>Comment}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>-->
+					<!--</ScrollContainer>-->
+				</content>
+				<footer>
+					<Bar>
+						<contentRight>
+							<!--<Button text="Submit" press="onInvenSubmit" type="Accept"/>-->
+							<Button text="Hold" id="HO" visible="{huAction>/huRelVisib}" type="Accept" press="onHold"/>
+							<Button text="Release" id="RE" visible="{huAction>/huHoldVisib}" type="Accept" press="onrel"/>
+							<Button text=" " type="Reject" icon="sap-icon://delete" press="onDelete"/>
+							<Button text="Call Release" id="rel" visible="{huAction>/huRelVisib}" type="Reject" press="goToRel"/>
+							<Button text="Call Hold" id="hold" visible="{huAction>/huHoldVisib}" type="Reject" press="goToHold"/>
+						</contentRight>
+					</Bar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

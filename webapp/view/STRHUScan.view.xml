@@ -1,0 +1,45 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.axium.Axium.controller.STRHUScan"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout">
+	<App>
+		<pages>
+			<Page title="Stock Transfer Receipt HU Scan for mat doc" showNavButton="true" navButtonPress="onPressBack">
+				<content>
+					<f:SimpleForm columnsL="7" columnsM="7" editable="false" emptySpanL="1" emptySpanM="1" labelSpanL="4" labelSpanM="4"
+						layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024">
+						<f:content>
+							<Label design="Bold" text="Material Number" class="sapUiSmallMarginTop"></Label>
+							<Input id="idSTRMaterialNumber" editable="false" value="{STRMaterialDetails>/strMatNum}"/>
+							<Label design="Bold" text="Material Description" class="sapUiSmallMarginTop"></Label>
+							<Input id="idSTRMaterialDescription" editable="false" value="{STRMaterialDetails>/strMatDesc}"/>
+							<Label design="Bold" text="Material Document Number" class="sapUiSmallMarginTop"></Label>
+							<Input id="idSTRMatDocNum" editable="false" value="{STRMaterialDetails>/strMatDocNum}"/>
+							<Label design="Bold" text=" Required Pallets" class="sapUiSmallMarginTop"></Label>
+							<Input id="idSTRRequiredPallets" editable="false" value="{STRMaterialDetails>/strRequiredPallet}"/>
+							<Label design="Bold" text="Scanned Pallets" class="sapUiSmallMarginTop"></Label>
+							<Input id="idSTRScannedPallets" editable="false" value="{STRMaterialDetails>/strScannedPallet}"></Input>
+							<Label design="Bold" text="Scan HU" class="sapUiSmallMarginTop"></Label>
+							<Input id="idSTRHU" enabled="true" placeholder="Scan HU Number" liveChange="validateHU"></Input>
+						</f:content>
+					</f:SimpleForm>
+					<List items="{oListHU>/HUSet}" headerText="HU Number" mode="SingleSelectLeft" id="idList">
+						<items>
+							<ObjectListItem title="{oListHU>ExternalHU}" id="idExternalHU">
+								<attributes>
+									<ObjectAttribute title="Batch Number" text="{oListHU>BatchNo}"/>
+									<ObjectAttribute title="Scanned Quantity" text="{oListHU>ScannedQnty}"/>
+								</attributes>
+							</ObjectListItem>
+						</items>
+					</List>
+				</content>
+				<footer>
+					<Bar>
+						<contentRight>
+							<Button text="Save" type="Accept" icon="sap-icon://save" press="onSave"/>
+						</contentRight>
+					</Bar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

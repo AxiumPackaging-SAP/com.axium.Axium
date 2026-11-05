@@ -1,0 +1,15 @@
+{
+    "type": "sap.web",
+    "builders": {
+        "configs": {}
+    },
+    "runners": {
+        "configs": {}
+    },
+    "attributes": {
+        "sap.watt.common.setting": [
+            "{\"projectType\":[\"sap.watt.uitools.ide.web\",\"sap.watt.uitools.ide.fiori\"],\"mockpreview\":{\"mockUri\":\"/sap/opu/odata/sap/ZWM_GW_RFSCREENS_SRV/\",\"metadataFilePath\":\"localService/ZWM_GW_RFSCREENS_SRV/metadata.xml\",\"loadJSONFiles\":false,\"loadCustomRequests\":false,\"mockRequestsFilePath\":\"\"},\"deploy\":{\"destination\":\"SSD_200\",\"name\":\"ZWMS_WM_UI5\"},\"layout\":{\"snapshot\":{\"viewport\":{\"x\":-100,\"y\":215.25,\"scale\":1},\"collapsedPorts\":[\"_ZWMS_WM_UI5_view_ScanHU_view_xml_2\",\"_ZWMS_WM_UI5_view_FGPickMaterial_view_xml_2\",\"_ZWMS_WM_UI5_view_ScanQuantityView_view_xml_2\",\"_ZWMS_WM_UI5_view_BoxQuantity_view_xml_2\",\"_ZWMS_WM_UI5_view_BOMPick_view_xml_2\",\"_ZWMS_WM_UI5_view_BOMReturn_view_xml_2\",\"_ZWMS_WM_UI5_view_BinScanPI_view_xml_2\",\"_ZWMS_WM_UI5_view_MaterialDetPI_view_xml_2\",\"_ZWMS_WM_UI5_view_InvenHUMat_view_xml_2\",\"_ZWMS_WM_UI5_view_HUorMatScan_view_xml_2\",\"_ZWMS_WM_UI5_view_STRMaterials_view_xml_2\",\"_ZWMS_WM_UI5_view_STRHUScan_view_xml_2\",\"_ZWMS_WM_UI5_view_PhysicalInventoryIM_view_xml_2\"],\"expandedShapes\":[],\"selection\":[],\"focus\":\"\"}},\"generation\":[{\"templateId\":\"ui5template.basicSAPUI5ApplicationComponent\",\"templateVersion\":\"1.4.0\",\"dateTimeStamp\":\"Sat, 18 May 2024 12:34:16 GMT\"}],\"codeCheckingTriggers\":{\"notifyBeforePush\":true,\"notifyBeforePushLevel\":\"ErrorAndWarning\",\"blockPush\":false,\"blockPushLevel\":\"ErrorAndWarning\"},\"basevalidator\":{\"services\":{\"js\":\"jsValidator\"}}}"
+        ]
+    },
+    "mixinTypes": []
+}

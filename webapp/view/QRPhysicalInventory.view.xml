@@ -1,0 +1,24 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.axium.Axium.controller.QRPhysicalInventory"
+	displayBlock="true" xmlns:l="sap.ui.layout" xmlns:custom="com.axium.barcode.materiallabel" xmlns:f="sap.ui.layout.form"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="QR Physical Inventory" showNavButton="true" navButtonPress="onPressBack">
+				<content>
+					<VBox>
+						<f:SimpleForm id="SimpleFormChange354" editable="true" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="3"
+							labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+							singleContainerFullSize="false">
+							<f:content>
+								<Button text="Print Label" class="sapMBtnContent" iconDensityAware="false" visible="true" enabled="true" width="250px" iconFirst="true"
+									type="Reject" press="onLabelPress" icon="sap-icon://print"/>
+								<Button text="Scan QR Code" class="sapMBtnContent" iconDensityAware="false" visible="true" enabled="true" width="250px" iconFirst="true"
+									type="Success" press="onScanPress" icon="sap-icon://bar-code"/>
+							</f:content>
+						</f:SimpleForm>
+					</VBox>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

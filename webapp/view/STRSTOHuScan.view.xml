@@ -1,0 +1,51 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.axium.Axium.controller.STRSTOHuScan"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout">
+	<App>
+		<pages>
+			<Page title="Stock Transfer Receipt HU Scan for Inbound Delivery" showNavButton="true" navButtonPress="onPressBack">
+				<content>
+					<f:SimpleForm columnsL="7" columnsM="7" editable="false" emptySpanL="1" emptySpanM="1" labelSpanL="4" labelSpanM="4"
+						layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024">
+						<f:content>
+							<Label design="Bold" text="Material Number" class="sapUiSmallMarginTop"></Label>
+							<Input id="idSTRMaterialNumber" editable="false" value="{STRSTOHuScan>/strMatNum}"/>
+							<Label design="Bold" text="Material Description" class="sapUiSmallMarginTop"></Label>
+							<Input id="idSTRMaterialDescription" editable="false" value="{STRSTOHuScan>/strMatDesc}"/>
+							<Label design="Bold" text="Quantity" class="sapUiSmallMarginTop"></Label>
+							<Input id="idSTRQuantityNum" editable="false" value="{STRSTOHuScan>/Quantity}"/>
+							<Label design="Bold" text="UOM" class="sapUiSmallMarginTop"></Label>
+							<Input id="idSTRUOM" editable="false" value="{STRSTOHuScan>/UOM}"/>
+							<Label design="Bold" text=" Total Pallets to be Scanned" class="sapUiSmallMarginTop"></Label>
+							<Input id="idSTRRequiredPallets" editable="false" value="{STRSTOHuScan>/TotalPallet}"/>
+							<Label design="Bold" text="Scanned Pallets" class="sapUiSmallMarginTop"></Label>
+							<Input id="idSTRScannedPallets" editable="false" value="{STRSTOHuScan>/ScannedPallet}"></Input>
+							<Label design="Bold" text="Scan HU" class="sapUiSmallMarginTop"></Label>
+							<Input id="idSTRHU" enabled="true" placeholder="Scan HU Number" liveChange="validateHU"></Input>
+							<!--<Label design="Bold" text="Bin Number" class="sapUiSmallMarginTop"></Label>-->
+							<!--<Input id="idSTRBIN" enabled="true" placeholder="Scan bin Number" liveChange="validateHU"></Input>-->
+						</f:content>
+					</f:SimpleForm>
+					<List items="{STRSTOHuItemScan>/HUSet}" headerText="HU Number" mode="SingleSelectLeft" id="idList">
+						<items>
+							<ObjectListItem title="{}" id="idExternalHU">
+								<attributes>
+									<ObjectAttribute title="HU Number" text="{STRSTOHuItemScan>ExternalHU}"/>
+									<ObjectAttribute title="Quantity" text="{STRSTOHuItemScan>Quantity}"/>
+									<ObjectAttribute title="UOM" text="{STRSTOHuItemScan>UOM}"/>
+									<ObjectAttribute title="Scanned" text="{STRSTOHuItemScan>Scanned}"/>
+								</attributes>
+							</ObjectListItem>
+						</items>
+					</List>
+				</content>
+				<footer>
+					<Bar>
+						<contentRight>
+							<Button text="Save" type="Accept" icon="sap-icon://save" press="onSave"/>
+						</contentRight>
+					</Bar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

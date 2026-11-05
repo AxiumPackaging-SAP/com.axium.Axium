@@ -1,0 +1,25 @@
+specVersion: "4.0"
+metadata:
+  name: com.axium.axium
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: AxiumSAPS4SSD200
+          url: http://ssdclnt200wd:44200
+          client: "200"
+        app:
+          name: ZWMS_WM_UI5
+          package: ZFIORI
+          description: WMS WM App
+          transport: SSDK900933
+        exclude:
+          - /test/
+          - /localService/

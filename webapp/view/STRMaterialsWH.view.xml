@@ -1,0 +1,58 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.axium.Axium.controller.STRMaterialsWH"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:tnt="sap.tnt">
+	<App>
+		<pages>
+			<Page>
+				<tnt:InfoLabel text="SELECT MATERIAL TO SCAN HU's" colorScheme="3" renderMode="Narrow"></tnt:InfoLabel>
+				<customHeader>
+					<Bar>
+						<contentRight>
+							<Input id="dooridwh" enabled="false" placeholder="Please Scan Door No" liveChange="doorValidation"></Input>
+						</contentRight>
+						<contentMiddle>
+							<Label text="Stock Transfer Receipts"></Label>
+						</contentMiddle>
+						<contentLeft>
+							<Button icon="sap-icon://nav-back" press="onPressBack"/>
+						</contentLeft>
+					</Bar>
+				</customHeader>
+				<content>
+					<ScrollContainer id="oScrollWH" height="500px" vertical="true" focusable="true">
+						<Table enableBusyIndicator="true" items="{STRMatDocMaterials>/results}" mode="SingleSelectMaster" selectionChange="onSTRMaterial"
+							id="idSTRMaterialsWH" growing="true">
+							<columns>
+								<Column hAlign="Center" width="60px" demandPopin="true">
+									<Label text="Material Description" design="Bold"></Label>
+								</Column>
+								<Column hAlign="Center" width="60px" demandPopin="true">
+									<Label text="Material Number" design="Bold"></Label>
+								</Column>
+								<Column hAlign="Center" width="60px" demandPopin="true">
+									<Label text="Material Document Number" design="Bold"></Label>
+								</Column>
+								<Column hAlign="Center" width="60px" demandPopin="true">
+									<Label text="Required Pallets" design="Bold"></Label>
+								</Column>
+								<Column hAlign="Center" width="60px" demandPopin="true">
+									<Label text="Scanned Pallets" design="Bold"></Label>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{STRMatDocMaterials>MaterialDescription}"></Text>
+										<Text text="{STRMatDocMaterials>MaterialNumber}"></Text>
+										<Text text="{STRMatDocMaterials>MaterialDocNo}"></Text>
+										<Text text="{STRMatDocMaterials>Quantity}"></Text>
+										<Text text="{STRMatDocMaterials>ScannedQuantity}"></Text>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</ScrollContainer>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

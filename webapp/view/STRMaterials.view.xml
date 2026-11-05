@@ -1,0 +1,84 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.axium.Axium.controller.STRMaterials"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:tnt="sap.tnt">
+	<App>
+		<pages>
+			<Page>
+				<tnt:InfoLabel text="SELECT MATERIAL TO SCAN HU's" colorScheme="3" renderMode="Narrow"></tnt:InfoLabel>
+				<customHeader>
+					<Bar>
+						<contentRight>
+							<Input id="doorid" visible="false" placeholder="Please Scan Door No" liveChange="doorValidation"></Input>
+						</contentRight>
+						<contentMiddle>
+							<Label text="Stock Transfer Receipts"></Label>
+						</contentMiddle>
+						<contentLeft>
+							<Button icon="sap-icon://nav-back" press="onPressBack"/>
+						</contentLeft>
+					</Bar>
+				</customHeader>
+				<content>
+					<ScrollContainer id="oScroll" height="500px" vertical="true" focusable="true">
+						<Table enableBusyIndicator="true" items="{STRMatDocMaterials>/results}" mode="None" 
+							id="idSTRMaterials" growing="true"> <!--selectionChange="onSTRMaterial"-->
+							<columns>
+								<Column hAlign="Center" width="60px" demandPopin="true">
+									<Label text="Material Description" design="Bold"></Label>
+								</Column>
+								<Column hAlign="Center" width="60px" demandPopin="true">
+									<Label text="Material Number" design="Bold"></Label>
+								</Column>
+								<Column hAlign="Center" width="60px" demandPopin="true">
+									<Label text="Material Document Number" design="Bold"></Label>
+								</Column>
+								
+								<!--
+								<Column hAlign="Center" width="60px" demandPopin="true">
+									<Label text="Required Pallets" design="Bold"></Label>
+								</Column>
+								<Column hAlign="Center" width="60px" demandPopin="true">
+									<Label text="Scanned Pallets" design="Bold"></Label>
+								</Column>
+								-->
+
+								<Column hAlign="Center" width="60px" demandPopin="true">
+									<Label text="Quantity" design="Bold"></Label>
+								</Column>
+								<Column hAlign="Center" width="60px" demandPopin="true">
+									<Label text="Unit of Measure" design="Bold"></Label>
+								</Column>
+								<Column hAlign="Center" width="60px" demandPopin="true">
+									<Label text="Batch" design="Bold"></Label>
+								</Column>
+								
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{STRMatDocMaterials>MaterialDescription}"></Text>
+										<Text text="{STRMatDocMaterials>MaterialNumber}"></Text>
+										<Text text="{STRMatDocMaterials>MaterialDocNo}"></Text>
+										<!--
+										<Text text="{STRMatDocMaterials>Quantity}"></Text>
+										<Text text="{STRMatDocMaterials>ScannedQuantity}"></Text>
+										-->
+										<Text text="{STRMatDocMaterials>ItemQuantity}"></Text>
+										<Text text="{STRMatDocMaterials>Unit}"></Text>
+										<Text text="{STRMatDocMaterials>Batch}"></Text>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</ScrollContainer>
+				</content>
+				<footer>
+					<Bar>
+						<contentRight>
+							<Button text="Save" type="Accept" icon="sap-icon://save" press="onSubmit"/>
+						</contentRight>
+					</Bar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

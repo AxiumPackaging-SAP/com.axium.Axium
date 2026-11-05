@@ -1,0 +1,10 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog id="myDialog" showHeader="false" class="sapUiContentPadding">
+		<VBox>
+			<Button text="HU Hold" id="idHold" class="sapMBtnContent" iconDensityAware="false" visible="true" enabled="true" width="315px"
+				iconFirst="true" type="Emphasized" press="onHuHold" icon="sap-icon://bar-code"/>
+			<Button text="HU Release" id="idRel" class="sapMBtnContent" iconDensityAware="false" visible="true" enabled="true" width="315px"
+				iconFirst="true" type="Emphasized" press="onHuRelease" icon="sap-icon://bar-code"/>
+		</VBox>
+	</Dialog>
+</core:FragmentDefinition>

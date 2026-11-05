@@ -1,0 +1,1533 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ODM',Version='0001',SAP__Origin='S4PCLNT400')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.ODM.v1" Alias="SAP__ODM"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZWM_GW_RFSCREENS_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="HUholdOrRelease" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="HU"/>
+                </Key>
+                <Property Name="HU" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Handling Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Status Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="StorageLocation" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Storage Location" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="BatchNo" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="MaterialDesc" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="MaterialDesc" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HoldStatus" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Message" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Comment" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="Comment" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StatusMessage" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Carrier" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Carrier1"/>
+                </Key>
+                <Property Name="Carrier1" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Carrier1" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="CarrierDesc" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Desc" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="DeliveryNoItemsVertix" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DeliveryNo"/>
+                    <PropertyRef Name="DeliveryItemNum"/>
+                </Key>
+                <Property Name="DeliveryNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Delivery" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DeliveryItemNum" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Delivery Item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialNumber" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Materialtype" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Material Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialGroup" Type="Edm.String" Nullable="false" MaxLength="9" sap:unicode="false" sap:label="Material Group" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ScannedQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Scanned Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Indicator" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Message" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialDescription" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Material Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ItemCategory" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="ItemCategory" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="AllStoLoc" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="StorageLocation"/>
+                </Key>
+                <Property Name="StorageLocation" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Stor. location" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="LocationDesc" Type="Edm.String" MaxLength="16" sap:unicode="false" sap:label="Location Desc" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="HUValidationVertix" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ExternalHU"/>
+                </Key>
+                <Property Name="ExternalHU" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="External HU no." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Indicator" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Valid or Invalid msg" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Batch" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="HUQtyDetailsVertix" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="HU"/>
+                    <PropertyRef Name="ExternalHU"/>
+                    <PropertyRef Name="BinNumber"/>
+                </Key>
+                <Property Name="HU" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="External HU no." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ExternalHU" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="External HU no." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="BinNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Bin Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="RequirementQnty" Type="Edm.String" MaxLength="15" sap:unicode="false" sap:label="Requirement qty" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="BatchNo" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Message" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialDesc" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Material Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BatchNo1" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WareHouse" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Ware house" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ScannedQnty" Type="Edm.String" MaxLength="15" sap:unicode="false" sap:label="Scanned Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Carrier" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="StorageLocation" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="DestPlant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="ReconAppHeaderVertix" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                </Key>
+                <Property Name="Carrier" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Carrier Text" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="StorageLocation" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Stor. location" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <NavigationProperty Name="NavReconHeadItemsVtx" Relationship="ZWM_GW_RFSCREENS_SRV.Asso_recon_head_item_vtx" FromRole="FromRole_Asso_recon_head_item_vtx" ToRole="ToRole_Asso_recon_head_item_vtx"/>
+            </EntityType>
+            <EntityType Name="MaterialBatch" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Material"/>
+                </Key>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="MATERIAL" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ReconnAppItemsvertix" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Srno"/>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="StorageLoc"/>
+                    <PropertyRef Name="Material"/>
+                    <PropertyRef Name="Batch"/>
+                    <PropertyRef Name="Carrier"/>
+                </Key>
+                <Property Name="DPlant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DSloc" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Stor. location" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Srno" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="Integer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StorageLoc" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Stor. location" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Batch" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Handlingunit" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Handling Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Systemstock" Type="Edm.Decimal" Nullable="false" Precision="25" Scale="3" sap:unicode="false" sap:label="Quantity (13,3)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Scannedqty" Type="Edm.Decimal" Nullable="false" Precision="25" Scale="3" sap:unicode="false" sap:label="Quantity (13,3)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Difference" Type="Edm.Decimal" Nullable="false" Precision="25" Scale="3" sap:unicode="false" sap:label="Quantity (13,3)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Carrier" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Carrier Text" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="HoldReason" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="RCODE"/>
+                </Key>
+                <Property Name="RCODE" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Rcode" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="RDESCRIPTION" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="RDescription" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="FGPutAwayHeader" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Message"/>
+                </Key>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Message" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NavFGHeaderFGItems" Relationship="ZWM_GW_RFSCREENS_SRV.Asso_FGPutAwayHeader_FGPutAwayItems" FromRole="FromRole_Asso_FGPutAwayHeader_FGPutAwayItems" ToRole="ToRole_Asso_FGPutAwayHeader_FGPutAwayItems"/>
+            </EntityType>
+            <EntityType Name="PoHeader" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PoNumber"/>
+                </Key>
+                <Property Name="PoNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Purchasing Doc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DeliveryNote" Type="Edm.String" MaxLength="16" sap:unicode="false" sap:label="Delivery Note" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NavPoheaderPoItems" Relationship="ZWM_GW_RFSCREENS_SRV.Asso_PoHeader_Poitems" FromRole="FromRole_Asso_PoHeader_Poitems" ToRole="ToRole_Asso_PoHeader_Poitems"/>
+            </EntityType>
+            <EntityType Name="HUValidation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ExternalHU"/>
+                </Key>
+                <Property Name="ExternalHU" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="External HU no." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Indicator" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Valid or Invalid msg" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Batch" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="BinNoValidation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BinNumber"/>
+                </Key>
+                <Property Name="BinNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Bin Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Message" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="Valid or Invalid msg" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ProductionOrderValidation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ProductionOrder"/>
+                </Key>
+                <Property Name="ProductionOrder" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Order" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Message" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ProductionRMPicking" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ProductionOrder"/>
+                </Key>
+                <Property Name="ProductionOrder" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Order" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ProductCode" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material No for Order" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialNumber" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RequirementQnty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Requirement qty" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IssueQnty" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Issue Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BatchNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Indicator" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Message" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Desc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Desc" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UOM" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="UOM" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StorageBin" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Source Stor.Bin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ProductionRMPickHeader" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ProductionOrder"/>
+                </Key>
+                <Property Name="ProductionOrder" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Order" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NavProductionOrderHeaderPick" Relationship="ZWM_GW_RFSCREENS_SRV.Asso_ProductionRMHeader_ProductionRMPick" FromRole="FromRole_Asso_ProductionRMHeader_ProductionRMPick" ToRole="ToRole_Asso_ProductionRMHeader_ProductionRMPick"/>
+            </EntityType>
+            <EntityType Name="DeliveryNoValidation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DeliveryNo"/>
+                </Key>
+                <Property Name="DeliveryNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Delivery" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Valid or Invalid msg" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Flag" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Flag to confirm overdelivery" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="WareHouse" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WareHouseNumber"/>
+                </Key>
+                <Property Name="WHDesc" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="UserName" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WareHouseNumber" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Warehouse No." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="StorageType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WareHouseNumber"/>
+                </Key>
+                <Property Name="WareHouseNumber" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Warehouse No." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StrTypDesc" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StorageTyp" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Storage Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Materials" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WareHouseNumber"/>
+                </Key>
+                <Property Name="WareHouseNumber" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Warehouse No." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Materialz" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StorageTyp" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Source Stor.Ty." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="StorageBins" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WareHouseNumber"/>
+                </Key>
+                <Property Name="WareHouseNumber" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Warehouse No." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StorageTyp" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Source Stor.Ty." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StorageBin" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Source Stor.Bin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Plants" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="PlantDesc" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Name 1" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="StorageLocation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Material"/>
+                </Key>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StorageLoc" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Stor. location" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Indicator" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LocationDesc" Type="Edm.String" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Location Desc" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="InvenoryStock" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="matnr"/>
+                    <PropertyRef Name="werks"/>
+                    <PropertyRef Name="lgort"/>
+                </Key>
+                <Property Name="matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="lgort" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="SLoc" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="maktx" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="MatDesc" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="name1" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="PlantName" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="meins" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="UOM" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="labst" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BatchNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="OutputEach" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="mtart" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="MatType" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="WareHouseStock" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WareHouseNumber"/>
+                </Key>
+                <Property Name="WareHouseNumber" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Warehouse No." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StorageTyp" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Storage Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StorageBin" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Storage Bin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BaseUnitMeasure" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Base Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TotalStock" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Total Stock" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Batch" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AvailableStock" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Available stock" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Custmat" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Customer Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="DeliveryNoItems" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DeliveryNo"/>
+                    <PropertyRef Name="DeliveryItemNum"/>
+                </Key>
+                <Property Name="DeliveryNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Delivery" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DeliveryItemNum" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Delivery Item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialNumber" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Materialtype" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Material Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialGroup" Type="Edm.String" Nullable="false" MaxLength="9" sap:unicode="false" sap:label="Material Group" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ScannedQuantity" Type="Edm.Decimal" Precision="15" Scale="0" sap:unicode="false" sap:label="Scanned Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Precision="15" Scale="0" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Indicator" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Message" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialDescription" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Material Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SalesOrder" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Reference Document" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ItemCategory" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="ItemCategory" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="HUQtyDetails" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="HU"/>
+                    <PropertyRef Name="ExternalHU"/>
+                    <PropertyRef Name="BinNumber"/>
+                </Key>
+                <Property Name="HU" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="External HU no." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ExternalHU" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="External HU no." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="BinNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Bin Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="RequirementQnty" Type="Edm.String" MaxLength="15" sap:unicode="false" sap:label="Requirement qty" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="BatchNo" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Message" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialDesc" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Material Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BatchNo1" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WareHouse" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Ware house" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ScannedQnty" Type="Edm.String" MaxLength="15" sap:unicode="false" sap:label="Scanned Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Carrier" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="StorageLocation" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="DestPlant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="PickDataStorage" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ExternalHU"/>
+                </Key>
+                <Property Name="BatchNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StorageBin" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Storae Bin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ExternalHU" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Handling Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StorageLoc" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Storage Location" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="BoxQuantity" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PurchaseOrder"/>
+                    <PropertyRef Name="Material"/>
+                    <PropertyRef Name="Batch"/>
+                </Key>
+                <Property Name="PurchaseOrder" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Purchase Order" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Batch" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BoxID" Type="Edm.Int16" sap:unicode="false" sap:label="Int2" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="BoxQuantityHeader" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PurchaseOrder"/>
+                </Key>
+                <Property Name="PurchaseOrder" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Purchase Order" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NavBoxQHBoxQ" Relationship="ZWM_GW_RFSCREENS_SRV.Asso_BoxQHBoxQ" FromRole="FromRole_Asso_BoxQHBoxQ" ToRole="ToRole_Asso_BoxQHBoxQ"/>
+            </EntityType>
+            <EntityType Name="DeleteBoxQuantity" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BatchNo"/>
+                </Key>
+                <Property Name="PoNumber" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Purchasing Doc." sap:filterable="false"/>
+                <Property Name="MaterialNo" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Material" sap:filterable="false"/>
+                <Property Name="BatchNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:filterable="false"/>
+                <Property Name="BoxId" Type="Edm.Int16" sap:unicode="false" sap:label="Box ID" sap:filterable="false"/>
+                <Property Name="BoxQty" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Box Quantity" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="DelBoxQtyHead" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PoNumber"/>
+                </Key>
+                <Property Name="PoNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Purchasing Doc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NavDelBoxQHDelBoxQty" Relationship="ZWM_GW_RFSCREENS_SRV.Asso_DelBoxQtyHead_DelBoxQty" FromRole="FromRole_Asso_DelBoxQtyHead_DelBoxQty" ToRole="ToRole_Asso_DelBoxQtyHead_DelBoxQty"/>
+            </EntityType>
+            <EntityType Name="StorageLoc" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="StorageLocation" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Stor. location" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Indicator" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="LocationDesc" Type="Edm.String" MaxLength="16" sap:unicode="false" sap:label="Location Desc" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="AllPlant" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="PlantDesc" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Name 1" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="MaterialValidation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Material"/>
+                </Key>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Valid or Invalid msg" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StorLoc" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Stor. location" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="BatchNoValidation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BatchNo"/>
+                </Key>
+                <Property Name="BatchNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="Valid or Invalid msg" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="BinMaterial" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BatchNo"/>
+                    <PropertyRef Name="Material"/>
+                    <PropertyRef Name="BinNumber"/>
+                </Key>
+                <Property Name="BatchNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialDesc" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Material Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="StrLoc" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Stor. location" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Count" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Count" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UOM" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Unit of Measure" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pallets" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Boxes" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PerBoxQty" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="perbox" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PerPalQty" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Perpal" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Indicator" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BinNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Bin Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="CountItems" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BinNumber"/>
+                </Key>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BinNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Storage Bin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Batch" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UOM" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Meins" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pallets" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Boxes" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StrLoc" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Stor. location" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Quantity in UnE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="CountHeader" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BinNumber"/>
+                </Key>
+                <Property Name="BinNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Storage Bin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="CountItemsSet" Relationship="ZWM_GW_RFSCREENS_SRV.Ass_countH_CountI" FromRole="FromRole_Ass_countH_CountI" ToRole="ToRole_Ass_countH_CountI"/>
+            </EntityType>
+            <EntityType Name="ReconAppHeader" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                </Key>
+                <Property Name="Carrier" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Carrier Text" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="StorageLocation" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Stor. location" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <NavigationProperty Name="NavReconHeadItems" Relationship="ZWM_GW_RFSCREENS_SRV.Asso_recon_head_item" FromRole="FromRole_Asso_recon_head_item" ToRole="ToRole_Asso_recon_head_item"/>
+            </EntityType>
+            <EntityType Name="ReconnAppItems" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Srno"/>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="StorageLoc"/>
+                    <PropertyRef Name="Material"/>
+                    <PropertyRef Name="Batch"/>
+                    <PropertyRef Name="Carrier"/>
+                </Key>
+                <Property Name="DPlant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DSloc" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Stor. location" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Srno" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="Integer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StorageLoc" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Stor. location" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Batch" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Handlingunit" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Handling Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Systemstock" Type="Edm.Decimal" Nullable="false" Precision="25" Scale="3" sap:unicode="false" sap:label="Quantity (13,3)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Scannedqty" Type="Edm.Decimal" Nullable="false" Precision="25" Scale="3" sap:unicode="false" sap:label="Quantity (13,3)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Difference" Type="Edm.Decimal" Nullable="false" Precision="25" Scale="3" sap:unicode="false" sap:label="Quantity (13,3)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Carrier" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Carrier Text" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="MatDocDetails" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MaterialDocNo"/>
+                </Key>
+                <Property Name="MaterialDocNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Material Document" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialNumber" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialDescription" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ScannedQuantity" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Scanned Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="MatDocValidation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MaterialDocNo"/>
+                </Key>
+                <Property Name="MaterialDocNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Material Document" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ValidMatDocInd" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Valid Material Doc Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DocAlreadyPosted" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Material Doc Posted Earlier" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FromView" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="View" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="MatDocHUValidation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MaterialDocNo"/>
+                    <PropertyRef Name="ExternalHU"/>
+                </Key>
+                <Property Name="MaterialDocNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Material Document" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ExternalHU" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="External HU no." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Valid or Invalid msg" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="MaterialDoc313mvt" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MaterialDocNo"/>
+                </Key>
+                <Property Name="MaterialDocNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Material Document" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialDocNoNew" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Material Document New" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ErrorMessage" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Error msg" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="IMValidateRecordNew" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BinNumber"/>
+                    <PropertyRef Name="RequiredPallets"/>
+                    <PropertyRef Name="Material"/>
+                    <PropertyRef Name="BatchNo"/>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="Sloc"/>
+                </Key>
+                <Property Name="BinNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Storage Bin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RequiredPallets" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Required Pallets" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BatchNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Valid or Invalid msg" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Sloc" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Storage Location" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="PickslipHeader" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ProductionOrder"/>
+                </Key>
+                <Property Name="ProductionOrder" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Order" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Message" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NavPickslipheaderPickslipItems" Relationship="ZWM_GW_RFSCREENS_SRV.Asso_PickslipHeader_Pickslipitems" FromRole="FromRole_Asso_PickslipHeader_Pickslipitems" ToRole="ToRole_Asso_PickslipHeader_Pickslipitems"/>
+            </EntityType>
+            <EntityType Name="PickslipItems" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ProductionOrder"/>
+                </Key>
+                <Property Name="ProductionOrder" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Order" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Component" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="BOM Component" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RequiredQty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Required quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IssuedQty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Issued quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IssueQty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Issue quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="FGPutAwayItems" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ExternalHU"/>
+                </Key>
+                <Property Name="BinNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Bin Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Valid or Invalid msg" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ExternalHU" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="External HU no." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="POValidation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PoNumber"/>
+                </Key>
+                <Property Name="PoNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Po Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="message" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="PoItems" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PoNumber"/>
+                    <PropertyRef Name="BatchNo"/>
+                </Key>
+                <Property Name="PoNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Purchasing Doc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialNumber" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="PO Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReceivedQuantity" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Received Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BatchNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DateOfManufacture" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Date of manufacture" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Indicator" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Message" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UOM" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Unit of Measure" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ValClass" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Class Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StorageLoc" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Stor. location" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BinNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Storage Bin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PoItem" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="ebelp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ProductionRMReturn" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ProductionOrder"/>
+                </Key>
+                <Property Name="ProductionOrder" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Order" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ProductCode" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material No for Order No" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialNumber" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RequirementQnty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Requirement qty" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BatchNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReturnQnty" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Return Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Indicator" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Message" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Desc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Desc" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UOM" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="UOM" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StorageBin" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Source Stor.Bin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ProductionRMReturnHeader" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ProductionOrder"/>
+                </Key>
+                <Property Name="ProductionOrder" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Order" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NavProductionOrderHeaderReturn" Relationship="ZWM_GW_RFSCREENS_SRV.Asso_ProductionRMHeader_ProductionRMRet" FromRole="FromRole_Asso_ProductionRMHeader_ProductionRMRet" ToRole="ToRole_Asso_ProductionRMHeader_ProductionRMRet"/>
+            </EntityType>
+            <EntityType Name="AvailableBins" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ExternalHU"/>
+                </Key>
+                <Property Name="ExternalHU" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="External HU no." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="StorageBin" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Storage Bin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AvailSpace" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Num8" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="LabelValidation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ProductionOrderNo"/>
+                </Key>
+                <Property Name="ProductionOrderNo" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Order" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Message" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="RMPutAwayAvailableBin" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WareHouseNo"/>
+                </Key>
+                <Property Name="UserName" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="UserName" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WareHouseNo" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Warehouse No." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StorageBin" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Storage Bin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="RMPickAvailableBins" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="StorageBin"/>
+                </Key>
+                <Property Name="BatchNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Message" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UOM" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Unit of Measure" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pallets" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StorageBin" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Source Stor.Bin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="BatchValidation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BatchNo"/>
+                </Key>
+                <Property Name="BatchNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="Valid or Invalid msg" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="DeliveryNoHeader" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ExternalHU"/>
+                </Key>
+                <Property Name="DeliveryNo" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Delivery" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DeliveryItemNum" Type="Edm.String" MaxLength="6" sap:unicode="false" sap:label="Delivery Item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StorageBin" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Storage Bin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BatchNo" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="Messge" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ExternalHU" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Handling Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Indicator" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NavDeliveryHeaderPickDataStorage" Relationship="ZWM_GW_RFSCREENS_SRV.Asso_DeliveryNoHeader_PickDataStorage" FromRole="FromRole_Asso_DeliveryNoHeader_PickDataStorage" ToRole="ToRole_Asso_DeliveryNoHeader_PickDataStorage"/>
+            </EntityType>
+            <EntityType Name="DoorNo" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WarehouseNo"/>
+                </Key>
+                <Property Name="WarehouseNo" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Warehouse No." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DoorDesc" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Desc" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DoorNumber" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Door for Whse" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="DeliveryHeader" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DeliveryNo"/>
+                </Key>
+                <Property Name="Indicator" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Indicator for Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DoorNumber" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Door for Whse" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Rmqty" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="RM Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MulBinsInd" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Multiple Bins" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DeliveryNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Delivery" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NavDeliHeadDeliItesms" Relationship="ZWM_GW_RFSCREENS_SRV.Asso_DeliHeader_Deliitems" FromRole="FromRole_Asso_DeliHeader_Deliitems" ToRole="ToRole_Asso_DeliHeader_Deliitems"/>
+            </EntityType>
+            <EntityType Name="DeleteFGPickDelivery" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DeliveryNo"/>
+                </Key>
+                <Property Name="DeliveryNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Delivery" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DeliveryItemNum" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Delivery Item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="RMPickBatchValidation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BatchNo"/>
+                </Key>
+                <Property Name="BatchNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Valid or Invalid msg" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="MaterialDetails" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Material"/>
+                </Key>
+                <Property Name="MaterialDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UOM" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Unit of Measure" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialType" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Material Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Indicator" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Batch Mgmt Rqt" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="BinToBin" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Indicator"/>
+                    <PropertyRef Name="SourceBin"/>
+                    <PropertyRef Name="ExternalHU"/>
+                    <PropertyRef Name="DestinationBin"/>
+                    <PropertyRef Name="WareHouseNumber"/>
+                </Key>
+                <Property Name="Indicator" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SourceBin" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Bin Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ExternalHU" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="External HU no." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="DestinationBin" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Bin Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="RequirementQnty" Type="Edm.String" MaxLength="15" sap:unicode="false" sap:label="Requirement qty" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="BatchNo" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WareHouseNumber" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Warehouse No." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SourceStrTyp" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Storage Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UOM" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Unit of Measure" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DestinationStrTyp" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Storage Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="PlantMaterial" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="Material"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="MaterialDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="InventoryItem" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BinNumber"/>
+                </Key>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Charg" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Qty in UnE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BinNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Bin Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Uom" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Unit of Entry" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Boxes" Type="Edm.Int16" Nullable="false" sap:unicode="false" sap:label="Int2" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="InventoryHeader" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BinNumber"/>
+                </Key>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BinNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Storage Bin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RecountInd" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Recount indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StorageLoc" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Stor. location" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NavInvHeadInvItem" Relationship="ZWM_GW_RFSCREENS_SRV.Asso_InvHead_InvItem" FromRole="FromRole_Asso_InvHead_InvItem" ToRole="ToRole_Asso_InvHead_InvItem"/>
+            </EntityType>
+            <EntityType Name="InventoryPlant" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Valuation area" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CompCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="AvailableBinsFGRM" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WareHouse"/>
+                </Key>
+                <Property Name="WareHouse" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Ware house" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Flag" Type="Edm.String" sap:unicode="false" sap:label="Flag" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StorageBin" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Storage Bin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StorageTyp" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Storage Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UOM" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Unit of Measure" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BatchNo" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AvailSpace" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Num8" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="AutoStorageType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WareHouseNumber"/>
+                </Key>
+                <Property Name="BinNumber" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Bin Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WareHouseNumber" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Warehouse No." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="StorageType" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Storage Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="BinToBinH" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Indicator"/>
+                </Key>
+                <Property Name="Indicator" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="BinToBinSet" Relationship="ZWM_GW_RFSCREENS_SRV.Asso_BinH_BinToBin" FromRole="FromRole_Asso_BinH_BinToBin" ToRole="ToRole_Asso_BinH_BinToBin"/>
+            </EntityType>
+            <EntityType Name="Material" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MaterialId"/>
+                </Key>
+                <Property Name="Indicator" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialId" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ReconValidation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Message"/>
+                </Key>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Valid or Invalid msg" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="WarehouseValidation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Message"/>
+                </Key>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Valid or Invalid msg" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="IMValidateRecord" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BinNumber"/>
+                </Key>
+                <Property Name="BinNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Storage Bin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RequiredPallets" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Required Pallets" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BatchNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Valid or Invalid msg" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="IMHeader" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BinNumber"/>
+                </Key>
+                <Property Name="BinNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Bin Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="RequiredPallets" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Required Pallets" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NavIMheaderIMItems" Relationship="ZWM_GW_RFSCREENS_SRV.Asso_IMHeader_IMitems" FromRole="FromRole_Asso_IMHeader_IMitems" ToRole="ToRole_Asso_IMHeader_IMitems"/>
+            </EntityType>
+            <EntityType Name="IMItems" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BinNumber"/>
+                    <PropertyRef Name="Client"/>
+                    <PropertyRef Name="Material"/>
+                </Key>
+                <Property Name="BinNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Bin number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Client" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Client" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BatchNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Batch number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialDesc" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Material description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ScannedQty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Scanned quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RequiredQty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Required quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StorageLocation" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Stor. location" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BoxID" Type="Edm.Int16" Nullable="false" sap:unicode="false" sap:label="BoxID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="PickslipValidate" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ProductionOrder"/>
+                </Key>
+                <Property Name="ProductionOrder" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Order" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Component" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="BOM Component" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RequiredQty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Required quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IssuedQty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Issued quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SavedHU" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Delivery"/>
+                </Key>
+                <Property Name="Delivery" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Delivery" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DeliveryItemNum" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Delivery Item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ExternalHU" Type="Edm.String" sap:unicode="false" sap:label="External HU" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="BatchNumber" Type="Edm.String" sap:unicode="false" sap:label="Batch Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="BinNumber" Type="Edm.String" sap:unicode="false" sap:label="Bin Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ScannedQty" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Scanned Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="MaterialBatchStock" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Material"/>
+                    <PropertyRef Name="Batch"/>
+                    <PropertyRef Name="Storage"/>
+                </Key>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Batch" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Storage" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Storage" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Stock" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Stock" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZVXBALE001" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SrNo"/>
+                </Key>
+                <Property Name="SrNo" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BaleCode" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BaleSupplier" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SuppLocation" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZVXBALE002" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SrNo"/>
+                </Key>
+                <Property Name="SrNo" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Grade" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="BaleMaterialTvarvc" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Material"/>
+                </Key>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SrNo" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="DeliveryHeaderVertex" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DeliveryNo"/>
+                </Key>
+                <Property Name="Indicator" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Indicator for Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DoorNumber" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Door for Whse" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Rmqty" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="RM Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MulBinsInd" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Multiple Bins" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DeliveryNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Delivery" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NavDeliHeadDeliItesms_v" Relationship="ZWM_GW_RFSCREENS_SRV.Asso_DeliHeader_Deliitems_v" FromRole="FromRole_Asso_DeliHeader_Deliitems_v" ToRole="ToRole_Asso_DeliHeader_Deliitems_v"/>
+            </EntityType>
+            <EntityType Name="SavedHUVertix" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Delivery"/>
+                </Key>
+                <Property Name="Delivery" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Delivery" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DeliveryItemNum" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Delivery Item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GaylordNo" Type="Edm.String" MaxLength="15" sap:unicode="false" sap:label="Gaylord Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="BatchNumber" Type="Edm.String" sap:unicode="false" sap:label="Batch Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ScannedQty" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Scanned Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="DeliveryNoHeaderVertex" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ExternalHU"/>
+                </Key>
+                <Property Name="GaylordNo" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Gaylord Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Date" Type="Edm.DateTime" Precision="8" sap:unicode="false" sap:label="Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Indicator" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Flag if clicked conf" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SrFlag" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="success or error PGI" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ExternalHU" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Handling Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DeliveryNo" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Delivery" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DeliveryItemNum" Type="Edm.String" MaxLength="6" sap:unicode="false" sap:label="Delivery Item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BatchNo" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Message" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NavDeliveryHeaderPickDataStorageVertix" Relationship="ZWM_GW_RFSCREENS_SRV.Asso_DeliveryNoHeader_PickDataStorage_v" FromRole="FromRole_Asso_DeliveryNoHeader_PickDataStorage_v" ToRole="ToRole_Asso_DeliveryNoHeader_PickDataStorage_v"/>
+            </EntityType>
+            <EntityType Name="InboundStockTransferReciept" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="InboundDeliveryNo"/>
+                    <PropertyRef Name="LineItem"/>
+                </Key>
+                <Property Name="InboundDeliveryNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Inbound Delivery" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialNumber" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialDescription" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UOM" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="UOM" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ScannedPallet" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Scanned Pallet" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TotalPallet" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Total Pallet" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LineItem" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Line Item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="InboundStockTransferHuDetails" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Delivery"/>
+                    <PropertyRef Name="Item"/>
+                </Key>
+                <Property Name="HuNumber" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.String" Nullable="false" MaxLength="13" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UOM" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Batch" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Delivery" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Item" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TotalPallet" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="InBoundHeaderDetails" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Delivery"/>
+                </Key>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BinNumber" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="BinNumber" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Message" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Delivery" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="InBoundItemDetailsSet" Relationship="ZWM_GW_RFSCREENS_SRV.Asso_InboundDeliveryH_InboundDeliveryI" FromRole="FromRole_Asso_InboundDeliveryH_InboundDeliveryI" ToRole="ToRole_Asso_InboundDeliveryH_InboundDeliveryI"/>
+            </EntityType>
+            <EntityType Name="InBoundItemDetails" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ExternalHu"/>
+                </Key>
+                <Property Name="Batch" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ExternalHu" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="ExternalHu" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Bale_Details_Data" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Order"/>
+                    <PropertyRef Name="Count"/>
+                </Key>
+                <Property Name="Date" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Time" Type="Edm.Time" Precision="7" sap:unicode="false" sap:label="Time created" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="OrderDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BaleMaterial" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BaleMaterialDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Weight" Type="Edm.Decimal" Nullable="false" Precision="12" Scale="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UOM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Order" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Date1" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Date2" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BaleSupplier" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SupplierLocation" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Grade" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Count" Type="Edm.Int16" Nullable="false" sap:unicode="false" sap:label="Signed INT2 / int16" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Count1" Type="Edm.Decimal" Nullable="false" Precision="12" Scale="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Bale_Header_Data" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Mode"/>
+                </Key>
+                <Property Name="Mode" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="BaleAppHeaderToItem" Relationship="ZWM_GW_RFSCREENS_SRV.Asso_BaleAppHeader_BaleAppItem" FromRole="FromRole_Asso_BaleAppHeader_BaleAppItem" ToRole="ToRole_Asso_BaleAppHeader_BaleAppItem"/>
+            </EntityType>
+            <Association Name="Asso_recon_head_item_vtx" sap:content-version="1">
+                <End Type="ZWM_GW_RFSCREENS_SRV.ReconAppHeaderVertix" Multiplicity="1" Role="FromRole_Asso_recon_head_item_vtx"/>
+                <End Type="ZWM_GW_RFSCREENS_SRV.ReconnAppItemsvertix" Multiplicity="*" Role="ToRole_Asso_recon_head_item_vtx"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Asso_recon_head_item_vtx">
+                        <PropertyRef Name="Plant"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Asso_recon_head_item_vtx">
+                        <PropertyRef Name="Plant"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Asso_DelBoxQtyHead_DelBoxQty" sap:content-version="1">
+                <End Type="ZWM_GW_RFSCREENS_SRV.DelBoxQtyHead" Multiplicity="0..1" Role="FromRole_Asso_DelBoxQtyHead_DelBoxQty"/>
+                <End Type="ZWM_GW_RFSCREENS_SRV.DeleteBoxQuantity" Multiplicity="*" Role="ToRole_Asso_DelBoxQtyHead_DelBoxQty"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Asso_DelBoxQtyHead_DelBoxQty">
+                        <PropertyRef Name="PoNumber"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Asso_DelBoxQtyHead_DelBoxQty">
+                        <PropertyRef Name="PoNumber"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Asso_BinH_BinToBin" sap:content-version="1">
+                <End Type="ZWM_GW_RFSCREENS_SRV.BinToBinH" Multiplicity="1" Role="FromRole_Asso_BinH_BinToBin"/>
+                <End Type="ZWM_GW_RFSCREENS_SRV.BinToBin" Multiplicity="*" Role="ToRole_Asso_BinH_BinToBin"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Asso_BinH_BinToBin">
+                        <PropertyRef Name="Indicator"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Asso_BinH_BinToBin">
+                        <PropertyRef Name="Indicator"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Asso_DeliHeader_Deliitems" sap:content-version="1">
+                <End Type="ZWM_GW_RFSCREENS_SRV.DeliveryHeader" Multiplicity="1" Role="FromRole_Asso_DeliHeader_Deliitems"/>
+                <End Type="ZWM_GW_RFSCREENS_SRV.DeliveryNoItems" Multiplicity="*" Role="ToRole_Asso_DeliHeader_Deliitems"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Asso_DeliHeader_Deliitems">
+                        <PropertyRef Name="DeliveryNo"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Asso_DeliHeader_Deliitems">
+                        <PropertyRef Name="DeliveryNo"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Ass_countH_CountI" sap:content-version="1">
+                <End Type="ZWM_GW_RFSCREENS_SRV.CountHeader" Multiplicity="1" Role="FromRole_Ass_countH_CountI"/>
+                <End Type="ZWM_GW_RFSCREENS_SRV.CountItems" Multiplicity="*" Role="ToRole_Ass_countH_CountI"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Ass_countH_CountI">
+                        <PropertyRef Name="BinNumber"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Ass_countH_CountI">
+                        <PropertyRef Name="BinNumber"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Asso_ProductionRMHeader_ProductionRMPick" sap:content-version="1">
+                <End Type="ZWM_GW_RFSCREENS_SRV.ProductionRMPickHeader" Multiplicity="0..1" Role="FromRole_Asso_ProductionRMHeader_ProductionRMPick"/>
+                <End Type="ZWM_GW_RFSCREENS_SRV.ProductionRMPicking" Multiplicity="*" Role="ToRole_Asso_ProductionRMHeader_ProductionRMPick"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Asso_ProductionRMHeader_ProductionRMPick">
+                        <PropertyRef Name="ProductionOrder"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Asso_ProductionRMHeader_ProductionRMPick">
+                        <PropertyRef Name="ProductionOrder"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Asso_recon_head_item" sap:content-version="1">
+                <End Type="ZWM_GW_RFSCREENS_SRV.ReconAppHeader" Multiplicity="1" Role="FromRole_Asso_recon_head_item"/>
+                <End Type="ZWM_GW_RFSCREENS_SRV.ReconnAppItems" Multiplicity="*" Role="ToRole_Asso_recon_head_item"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Asso_recon_head_item">
+                        <PropertyRef Name="Plant"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Asso_recon_head_item">
+                        <PropertyRef Name="Plant"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Asso_FGPutAwayHeader_FGPutAwayItems" sap:content-version="1">
+                <End Type="ZWM_GW_RFSCREENS_SRV.FGPutAwayHeader" Multiplicity="0..1" Role="FromRole_Asso_FGPutAwayHeader_FGPutAwayItems"/>
+                <End Type="ZWM_GW_RFSCREENS_SRV.FGPutAwayItems" Multiplicity="*" Role="ToRole_Asso_FGPutAwayHeader_FGPutAwayItems"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Asso_FGPutAwayHeader_FGPutAwayItems">
+                        <PropertyRef Name="Message"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Asso_FGPutAwayHeader_FGPutAwayItems">
+                        <PropertyRef Name="Message"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Asso_InvHead_InvItem" sap:content-version="1">
+                <End Type="ZWM_GW_RFSCREENS_SRV.InventoryHeader" Multiplicity="1" Role="FromRole_Asso_InvHead_InvItem"/>
+                <End Type="ZWM_GW_RFSCREENS_SRV.InventoryItem" Multiplicity="*" Role="ToRole_Asso_InvHead_InvItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Asso_InvHead_InvItem">
+                        <PropertyRef Name="BinNumber"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Asso_InvHead_InvItem">
+                        <PropertyRef Name="BinNumber"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Asso_DeliveryNoHeader_PickDataStorage" sap:content-version="1">
+                <End Type="ZWM_GW_RFSCREENS_SRV.DeliveryNoHeader" Multiplicity="*" Role="FromRole_Asso_DeliveryNoHeader_PickDataStorage"/>
+                <End Type="ZWM_GW_RFSCREENS_SRV.PickDataStorage" Multiplicity="*" Role="ToRole_Asso_DeliveryNoHeader_PickDataStorage"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Asso_DeliveryNoHeader_PickDataStorage">
+                        <PropertyRef Name="ExternalHU"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Asso_DeliveryNoHeader_PickDataStorage">
+                        <PropertyRef Name="ExternalHU"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Asso_DeliveryHeaderv_PickDataStorage" sap:content-version="1">
+                <End Type="ZWM_GW_RFSCREENS_SRV.DeliveryNoHeader" Multiplicity="*" Role="FromRole_Asso_DeliveryHeaderv_PickDataStorage"/>
+                <End Type="ZWM_GW_RFSCREENS_SRV.PickDataStorage" Multiplicity="*" Role="ToRole_Asso_DeliveryHeaderv_PickDataStorage"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Asso_DeliveryHeaderv_PickDataStorage">
+                        <PropertyRef Name="ExternalHU"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Asso_DeliveryHeaderv_PickDataStorage">
+                        <PropertyRef Name="ExternalHU"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Asso_PoHeader_Poitems" sap:content-version="1">
+                <End Type="ZWM_GW_RFSCREENS_SRV.PoHeader" Multiplicity="0..1" Role="FromRole_Asso_PoHeader_Poitems"/>
+                <End Type="ZWM_GW_RFSCREENS_SRV.PoItems" Multiplicity="*" Role="ToRole_Asso_PoHeader_Poitems"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Asso_PoHeader_Poitems">
+                        <PropertyRef Name="PoNumber"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Asso_PoHeader_Poitems">
+                        <PropertyRef Name="PoNumber"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Asso_BaleAppHeader_BaleAppItem" sap:content-version="1">
+                <End Type="ZWM_GW_RFSCREENS_SRV.Bale_Header_Data" Multiplicity="1" Role="FromRole_Asso_BaleAppHeader_BaleAppItem"/>
+                <End Type="ZWM_GW_RFSCREENS_SRV.Bale_Details_Data" Multiplicity="*" Role="ToRole_Asso_BaleAppHeader_BaleAppItem"/>
+            </Association>
+            <Association Name="Asso_ProductionRMHeader_ProductionRMRet" sap:content-version="1">
+                <End Type="ZWM_GW_RFSCREENS_SRV.ProductionRMReturnHeader" Multiplicity="0..1" Role="FromRole_Asso_ProductionRMHeader_ProductionRMRet"/>
+                <End Type="ZWM_GW_RFSCREENS_SRV.ProductionRMReturn" Multiplicity="*" Role="ToRole_Asso_ProductionRMHeader_ProductionRMRet"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Asso_ProductionRMHeader_ProductionRMRet">
+                        <PropertyRef Name="ProductionOrder"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Asso_ProductionRMHeader_ProductionRMRet">
+                        <PropertyRef Name="ProductionOrder"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Asso_DeliveryNoHeader_PickDataStorage_v" sap:content-version="1">
+                <End Type="ZWM_GW_RFSCREENS_SRV.DeliveryNoHeaderVertex" Multiplicity="*" Role="FromRole_Asso_DeliveryNoHeader_PickDataStorage_v"/>
+                <End Type="ZWM_GW_RFSCREENS_SRV.PickDataStorage" Multiplicity="*" Role="ToRole_Asso_DeliveryNoHeader_PickDataStorage_v"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Asso_DeliveryNoHeader_PickDataStorage_v">
+                        <PropertyRef Name="ExternalHU"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Asso_DeliveryNoHeader_PickDataStorage_v">
+                        <PropertyRef Name="ExternalHU"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Asso_PickslipHeader_Pickslipitems" sap:content-version="1">
+                <End Type="ZWM_GW_RFSCREENS_SRV.PickslipHeader" Multiplicity="0..1" Role="FromRole_Asso_PickslipHeader_Pickslipitems"/>
+                <End Type="ZWM_GW_RFSCREENS_SRV.PickslipItems" Multiplicity="*" Role="ToRole_Asso_PickslipHeader_Pickslipitems"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Asso_PickslipHeader_Pickslipitems">
+                        <PropertyRef Name="ProductionOrder"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Asso_PickslipHeader_Pickslipitems">
+                        <PropertyRef Name="ProductionOrder"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Asso_DeliHeader_Deliitems_v" sap:content-version="1">
+                <End Type="ZWM_GW_RFSCREENS_SRV.DeliveryHeaderVertex" Multiplicity="1" Role="FromRole_Asso_DeliHeader_Deliitems_v"/>
+                <End Type="ZWM_GW_RFSCREENS_SRV.DeliveryNoItemsVertix" Multiplicity="*" Role="ToRole_Asso_DeliHeader_Deliitems_v"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Asso_DeliHeader_Deliitems_v">
+                        <PropertyRef Name="DeliveryNo"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Asso_DeliHeader_Deliitems_v">
+                        <PropertyRef Name="DeliveryNo"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Asso_IMHeader_IMitems" sap:content-version="1">
+                <End Type="ZWM_GW_RFSCREENS_SRV.IMHeader" Multiplicity="*" Role="FromRole_Asso_IMHeader_IMitems"/>
+                <End Type="ZWM_GW_RFSCREENS_SRV.IMItems" Multiplicity="*" Role="ToRole_Asso_IMHeader_IMitems"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Asso_IMHeader_IMitems">
+                        <PropertyRef Name="BinNumber"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Asso_IMHeader_IMitems">
+                        <PropertyRef Name="BinNumber"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Asso_InboundDeliveryH_InboundDeliveryI" sap:content-version="1">
+                <End Type="ZWM_GW_RFSCREENS_SRV.InBoundHeaderDetails" Multiplicity="1" Role="FromRole_Asso_InboundDeliveryH_InboundDeliveryI"/>
+                <End Type="ZWM_GW_RFSCREENS_SRV.InBoundItemDetails" Multiplicity="*" Role="ToRole_Asso_InboundDeliveryH_InboundDeliveryI"/>
+            </Association>
+            <Association Name="Asso_BoxQHBoxQ" sap:content-version="1">
+                <End Type="ZWM_GW_RFSCREENS_SRV.BoxQuantityHeader" Multiplicity="0..1" Role="FromRole_Asso_BoxQHBoxQ"/>
+                <End Type="ZWM_GW_RFSCREENS_SRV.BoxQuantity" Multiplicity="*" Role="ToRole_Asso_BoxQHBoxQ"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Asso_BoxQHBoxQ">
+                        <PropertyRef Name="PurchaseOrder"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Asso_BoxQHBoxQ">
+                        <PropertyRef Name="PurchaseOrder"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZWM_GW_RFSCREENS_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="HUholdOrReleaseSet" EntityType="ZWM_GW_RFSCREENS_SRV.HUholdOrRelease" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="Carrier" EntityType="ZWM_GW_RFSCREENS_SRV.Carrier" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="DeliveryNoItemsVertixSet" EntityType="ZWM_GW_RFSCREENS_SRV.DeliveryNoItemsVertix" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="AllStoLocSet" EntityType="ZWM_GW_RFSCREENS_SRV.AllStoLoc" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="HUValidationVertixCollection" EntityType="ZWM_GW_RFSCREENS_SRV.HUValidationVertix" sap:content-version="1"/>
+                <EntitySet Name="HUQtyDetailsVertixSet" EntityType="ZWM_GW_RFSCREENS_SRV.HUQtyDetailsVertix" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ReconAppHeaderVertixSet" EntityType="ZWM_GW_RFSCREENS_SRV.ReconAppHeaderVertix" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="MaterialBatchCheck" EntityType="ZWM_GW_RFSCREENS_SRV.MaterialBatch" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ReconnAppItemsVtxSet" EntityType="ZWM_GW_RFSCREENS_SRV.ReconnAppItemsvertix" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="HoldReason" EntityType="ZWM_GW_RFSCREENS_SRV.HoldReason" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="FGPutAwayHeaderSet" EntityType="ZWM_GW_RFSCREENS_SRV.FGPutAwayHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="PoHeaderSet" EntityType="ZWM_GW_RFSCREENS_SRV.PoHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="HUValidationSet" EntityType="ZWM_GW_RFSCREENS_SRV.HUValidation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="BinNoValidationSet" EntityType="ZWM_GW_RFSCREENS_SRV.BinNoValidation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ProductionOrderValidationSet" EntityType="ZWM_GW_RFSCREENS_SRV.ProductionOrderValidation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ProductionRMPickingSet" EntityType="ZWM_GW_RFSCREENS_SRV.ProductionRMPicking" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ProductionRMPickHeaderSet" EntityType="ZWM_GW_RFSCREENS_SRV.ProductionRMPickHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="DeliveryNoValidationSet" EntityType="ZWM_GW_RFSCREENS_SRV.DeliveryNoValidation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="WareHouseSet" EntityType="ZWM_GW_RFSCREENS_SRV.WareHouse" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="StorageTypeSet" EntityType="ZWM_GW_RFSCREENS_SRV.StorageType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="MaterialsSet" EntityType="ZWM_GW_RFSCREENS_SRV.Materials" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="StorageBinsSet" EntityType="ZWM_GW_RFSCREENS_SRV.StorageBins" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="PlantsSet" EntityType="ZWM_GW_RFSCREENS_SRV.Plants" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="StorageLocationSet" EntityType="ZWM_GW_RFSCREENS_SRV.StorageLocation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="InvenoryStockSet" EntityType="ZWM_GW_RFSCREENS_SRV.InvenoryStock" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="WareHouseStockSet" EntityType="ZWM_GW_RFSCREENS_SRV.WareHouseStock" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="DeliveryNoItemsSet" EntityType="ZWM_GW_RFSCREENS_SRV.DeliveryNoItems" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="HUQtyDetailsSet" EntityType="ZWM_GW_RFSCREENS_SRV.HUQtyDetails" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="PickDataStorageSet" EntityType="ZWM_GW_RFSCREENS_SRV.PickDataStorage" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="BoxQuantitySet" EntityType="ZWM_GW_RFSCREENS_SRV.BoxQuantity" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="BoxQuantityHeaderSet" EntityType="ZWM_GW_RFSCREENS_SRV.BoxQuantityHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="DeleteBoxQuantitySet" EntityType="ZWM_GW_RFSCREENS_SRV.DeleteBoxQuantity" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="DelBoxQtyHeadSet" EntityType="ZWM_GW_RFSCREENS_SRV.DelBoxQtyHead" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="StorageLocSet" EntityType="ZWM_GW_RFSCREENS_SRV.StorageLoc" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="AllPlantSet" EntityType="ZWM_GW_RFSCREENS_SRV.AllPlant" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="MaterialValidationSet" EntityType="ZWM_GW_RFSCREENS_SRV.MaterialValidation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="BatchNoValidationSet" EntityType="ZWM_GW_RFSCREENS_SRV.BatchNoValidation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="BinMaterialSet" EntityType="ZWM_GW_RFSCREENS_SRV.BinMaterial" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="CountItemsSet" EntityType="ZWM_GW_RFSCREENS_SRV.CountItems" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="CountHeaderSet" EntityType="ZWM_GW_RFSCREENS_SRV.CountHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ReconAppHeaderSet" EntityType="ZWM_GW_RFSCREENS_SRV.ReconAppHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ReconnAppItemsSet" EntityType="ZWM_GW_RFSCREENS_SRV.ReconnAppItems" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="MatDocDetailsSet" EntityType="ZWM_GW_RFSCREENS_SRV.MatDocDetails" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="MatDocValidationSet" EntityType="ZWM_GW_RFSCREENS_SRV.MatDocValidation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="MatDocHUValidationCollection" EntityType="ZWM_GW_RFSCREENS_SRV.MatDocHUValidation" sap:content-version="1"/>
+                <EntitySet Name="MaterialDoc313mvtSet" EntityType="ZWM_GW_RFSCREENS_SRV.MaterialDoc313mvt" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="IMValidateRecordNewSet" EntityType="ZWM_GW_RFSCREENS_SRV.IMValidateRecordNew" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="PickslipHeaderSet" EntityType="ZWM_GW_RFSCREENS_SRV.PickslipHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="PickslipItemsSet" EntityType="ZWM_GW_RFSCREENS_SRV.PickslipItems" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="FGPutAwayItemsSet" EntityType="ZWM_GW_RFSCREENS_SRV.FGPutAwayItems" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="POValidationSet" EntityType="ZWM_GW_RFSCREENS_SRV.POValidation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="PoItemsSet" EntityType="ZWM_GW_RFSCREENS_SRV.PoItems" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ProductionRMReturnSet" EntityType="ZWM_GW_RFSCREENS_SRV.ProductionRMReturn" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ProductionRMReturnHeaderSet" EntityType="ZWM_GW_RFSCREENS_SRV.ProductionRMReturnHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="AvailableBinsSet" EntityType="ZWM_GW_RFSCREENS_SRV.AvailableBins" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="LabelValidationSet" EntityType="ZWM_GW_RFSCREENS_SRV.LabelValidation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="RMPutAwayAvailableBinSet" EntityType="ZWM_GW_RFSCREENS_SRV.RMPutAwayAvailableBin" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="RMPickAvailableBinsSet" EntityType="ZWM_GW_RFSCREENS_SRV.RMPickAvailableBins" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="BatchValidationSet" EntityType="ZWM_GW_RFSCREENS_SRV.BatchValidation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="DeliveryNoHeaderSet" EntityType="ZWM_GW_RFSCREENS_SRV.DeliveryNoHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="DoorNoSet" EntityType="ZWM_GW_RFSCREENS_SRV.DoorNo" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="DeliveryHeaderSet" EntityType="ZWM_GW_RFSCREENS_SRV.DeliveryHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="DeleteFGPickDeliverySet" EntityType="ZWM_GW_RFSCREENS_SRV.DeleteFGPickDelivery" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="RMPickBatchValidationSet" EntityType="ZWM_GW_RFSCREENS_SRV.RMPickBatchValidation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="MaterialDetailsSet" EntityType="ZWM_GW_RFSCREENS_SRV.MaterialDetails" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="BinToBinSet" EntityType="ZWM_GW_RFSCREENS_SRV.BinToBin" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="PlantMaterialSet" EntityType="ZWM_GW_RFSCREENS_SRV.PlantMaterial" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="InventoryItemSet" EntityType="ZWM_GW_RFSCREENS_SRV.InventoryItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="InventoryHeaderSet" EntityType="ZWM_GW_RFSCREENS_SRV.InventoryHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="InventoryPlantSet" EntityType="ZWM_GW_RFSCREENS_SRV.InventoryPlant" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="AvailableBinsFGRMSet" EntityType="ZWM_GW_RFSCREENS_SRV.AvailableBinsFGRM" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="AutoStorageTypeSet" EntityType="ZWM_GW_RFSCREENS_SRV.AutoStorageType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="BinToBinHSet" EntityType="ZWM_GW_RFSCREENS_SRV.BinToBinH" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="MaterialSet" EntityType="ZWM_GW_RFSCREENS_SRV.Material" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ReconValidationSet" EntityType="ZWM_GW_RFSCREENS_SRV.ReconValidation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="WarehouseValidationSet" EntityType="ZWM_GW_RFSCREENS_SRV.WarehouseValidation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="IMValidateRecordSet" EntityType="ZWM_GW_RFSCREENS_SRV.IMValidateRecord" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="IMHeaderSet" EntityType="ZWM_GW_RFSCREENS_SRV.IMHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="IMItemsSet" EntityType="ZWM_GW_RFSCREENS_SRV.IMItems" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="PickslipValidateSet" EntityType="ZWM_GW_RFSCREENS_SRV.PickslipValidate" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SavedHUSet" EntityType="ZWM_GW_RFSCREENS_SRV.SavedHU" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="MaterialBatchStockSet" EntityType="ZWM_GW_RFSCREENS_SRV.MaterialBatchStock" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZVXBALE001Set" EntityType="ZWM_GW_RFSCREENS_SRV.ZVXBALE001" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZVXBALE002Set" EntityType="ZWM_GW_RFSCREENS_SRV.ZVXBALE002" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="BaleMaterialTvarvcSet" EntityType="ZWM_GW_RFSCREENS_SRV.BaleMaterialTvarvc" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="DeliveryHeaderVertexSet" EntityType="ZWM_GW_RFSCREENS_SRV.DeliveryHeaderVertex" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SavedHUVertixSet" EntityType="ZWM_GW_RFSCREENS_SRV.SavedHUVertix" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="DeliveryNoHeaderVertexSet" EntityType="ZWM_GW_RFSCREENS_SRV.DeliveryNoHeaderVertex" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="InboundStockTransferRecieptSet" EntityType="ZWM_GW_RFSCREENS_SRV.InboundStockTransferReciept" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="InboundStockTransferHuDetailsSet" EntityType="ZWM_GW_RFSCREENS_SRV.InboundStockTransferHuDetails" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="InBoundHeaderDetailsSet" EntityType="ZWM_GW_RFSCREENS_SRV.InBoundHeaderDetails" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="InBoundItemDetailsSet" EntityType="ZWM_GW_RFSCREENS_SRV.InBoundItemDetails" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="Bale_Details_DataSet" EntityType="ZWM_GW_RFSCREENS_SRV.Bale_Details_Data" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="Bale_Header_DataSet" EntityType="ZWM_GW_RFSCREENS_SRV.Bale_Header_Data" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <AssociationSet Name="Asso_PickslipHeader_PickslipitemsSet" Association="ZWM_GW_RFSCREENS_SRV.Asso_PickslipHeader_Pickslipitems" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="PickslipHeaderSet" Role="FromRole_Asso_PickslipHeader_Pickslipitems"/>
+                    <End EntitySet="PickslipItemsSet" Role="ToRole_Asso_PickslipHeader_Pickslipitems"/>
+                </AssociationSet>
+                <AssociationSet Name="Asso_DeliveryNoHeader_PickDataStorageSet" Association="ZWM_GW_RFSCREENS_SRV.Asso_DeliveryNoHeader_PickDataStorage" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="DeliveryNoHeaderSet" Role="FromRole_Asso_DeliveryNoHeader_PickDataStorage"/>
+                    <End EntitySet="PickDataStorageSet" Role="ToRole_Asso_DeliveryNoHeader_PickDataStorage"/>
+                </AssociationSet>
+                <AssociationSet Name="Asso_SubmitHeader_ScanHUValidationSet" Association="ZWM_GW_RFSCREENS_SRV.Asso_FGPutAwayHeader_FGPutAwayItems" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="FGPutAwayHeaderSet" Role="FromRole_Asso_FGPutAwayHeader_FGPutAwayItems"/>
+                    <End EntitySet="FGPutAwayItemsSet" Role="ToRole_Asso_FGPutAwayHeader_FGPutAwayItems"/>
+                </AssociationSet>
+                <AssociationSet Name="Asso_recon_head_itemSet" Association="ZWM_GW_RFSCREENS_SRV.Asso_recon_head_item" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ReconAppHeaderSet" Role="FromRole_Asso_recon_head_item"/>
+                    <End EntitySet="ReconnAppItemsSet" Role="ToRole_Asso_recon_head_item"/>
+                </AssociationSet>
+                <AssociationSet Name="Asso_DeliHeader_Deliitems_v_AssocSet" Association="ZWM_GW_RFSCREENS_SRV.Asso_DeliHeader_Deliitems_v" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="DeliveryHeaderVertexSet" Role="FromRole_Asso_DeliHeader_Deliitems_v"/>
+                    <End EntitySet="DeliveryNoItemsVertixSet" Role="ToRole_Asso_DeliHeader_Deliitems_v"/>
+                </AssociationSet>
+                <AssociationSet Name="Asso_DeliveryHeaderv_PickDataStorage_Ass" Association="ZWM_GW_RFSCREENS_SRV.Asso_DeliveryHeaderv_PickDataStorage" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="DeliveryNoHeaderSet" Role="FromRole_Asso_DeliveryHeaderv_PickDataStorage"/>
+                    <End EntitySet="PickDataStorageSet" Role="ToRole_Asso_DeliveryHeaderv_PickDataStorage"/>
+                </AssociationSet>
+                <AssociationSet Name="Asso_recon_head_item_VtxSet" Association="ZWM_GW_RFSCREENS_SRV.Asso_recon_head_item_vtx" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ReconAppHeaderVertixSet" Role="FromRole_Asso_recon_head_item_vtx"/>
+                    <End EntitySet="ReconnAppItemsVtxSet" Role="ToRole_Asso_recon_head_item_vtx"/>
+                </AssociationSet>
+                <AssociationSet Name="Asso_BoxQHBoxQSet" Association="ZWM_GW_RFSCREENS_SRV.Asso_BoxQHBoxQ" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="BoxQuantityHeaderSet" Role="FromRole_Asso_BoxQHBoxQ"/>
+                    <End EntitySet="BoxQuantitySet" Role="ToRole_Asso_BoxQHBoxQ"/>
+                </AssociationSet>
+                <AssociationSet Name="Asso_IMHeader_IMitemsSet" Association="ZWM_GW_RFSCREENS_SRV.Asso_IMHeader_IMitems" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="IMHeaderSet" Role="FromRole_Asso_IMHeader_IMitems"/>
+                    <End EntitySet="IMItemsSet" Role="ToRole_Asso_IMHeader_IMitems"/>
+                </AssociationSet>
+                <AssociationSet Name="Asso_InboundDeliveryH_InboundDeliverySet" Association="ZWM_GW_RFSCREENS_SRV.Asso_InboundDeliveryH_InboundDeliveryI" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="InBoundHeaderDetailsSet" Role="FromRole_Asso_InboundDeliveryH_InboundDeliveryI"/>
+                    <End EntitySet="InBoundItemDetailsSet" Role="ToRole_Asso_InboundDeliveryH_InboundDeliveryI"/>
+                </AssociationSet>
+                <AssociationSet Name="Asso_InvHead_InvItemSet" Association="ZWM_GW_RFSCREENS_SRV.Asso_InvHead_InvItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="InventoryHeaderSet" Role="FromRole_Asso_InvHead_InvItem"/>
+                    <End EntitySet="InventoryItemSet" Role="ToRole_Asso_InvHead_InvItem"/>
+                </AssociationSet>
+                <AssociationSet Name="Asso_BaleAppHeader_BaleAppItemSet" Association="ZWM_GW_RFSCREENS_SRV.Asso_BaleAppHeader_BaleAppItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Bale_Header_DataSet" Role="FromRole_Asso_BaleAppHeader_BaleAppItem"/>
+                    <End EntitySet="Bale_Details_DataSet" Role="ToRole_Asso_BaleAppHeader_BaleAppItem"/>
+                </AssociationSet>
+                <AssociationSet Name="Asso_ProductionRMHeader_ProductionRMRet_" Association="ZWM_GW_RFSCREENS_SRV.Asso_ProductionRMHeader_ProductionRMRet" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ProductionRMReturnHeaderSet" Role="FromRole_Asso_ProductionRMHeader_ProductionRMRet"/>
+                    <End EntitySet="ProductionRMReturnSet" Role="ToRole_Asso_ProductionRMHeader_ProductionRMRet"/>
+                </AssociationSet>
+                <AssociationSet Name="Ass_countH_CountISet" Association="ZWM_GW_RFSCREENS_SRV.Ass_countH_CountI" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CountHeaderSet" Role="FromRole_Ass_countH_CountI"/>
+                    <End EntitySet="CountItemsSet" Role="ToRole_Ass_countH_CountI"/>
+                </AssociationSet>
+                <AssociationSet Name="Asso_DeliHeader_DeliitemsSet" Association="ZWM_GW_RFSCREENS_SRV.Asso_DeliHeader_Deliitems" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="DeliveryHeaderSet" Role="FromRole_Asso_DeliHeader_Deliitems"/>
+                    <End EntitySet="DeliveryNoItemsSet" Role="ToRole_Asso_DeliHeader_Deliitems"/>
+                </AssociationSet>
+                <AssociationSet Name="Asso_DelBoxQtyHead_DelBoxQtySet" Association="ZWM_GW_RFSCREENS_SRV.Asso_DelBoxQtyHead_DelBoxQty" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="DelBoxQtyHeadSet" Role="FromRole_Asso_DelBoxQtyHead_DelBoxQty"/>
+                    <End EntitySet="DeleteBoxQuantitySet" Role="ToRole_Asso_DelBoxQtyHead_DelBoxQty"/>
+                </AssociationSet>
+                <AssociationSet Name="Asso_ProductionRMHeader_ProductionRMPick" Association="ZWM_GW_RFSCREENS_SRV.Asso_ProductionRMHeader_ProductionRMPick" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ProductionRMPickHeaderSet" Role="FromRole_Asso_ProductionRMHeader_ProductionRMPick"/>
+                    <End EntitySet="ProductionRMPickingSet" Role="ToRole_Asso_ProductionRMHeader_ProductionRMPick"/>
+                </AssociationSet>
+                <AssociationSet Name="Asso_PoHeader_PoitemsSet" Association="ZWM_GW_RFSCREENS_SRV.Asso_PoHeader_Poitems" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="PoHeaderSet" Role="FromRole_Asso_PoHeader_Poitems"/>
+                    <End EntitySet="PoItemsSet" Role="ToRole_Asso_PoHeader_Poitems"/>
+                </AssociationSet>
+                <AssociationSet Name="Asso_DeliveryNoHeader_PickDataStorage_v_" Association="ZWM_GW_RFSCREENS_SRV.Asso_DeliveryNoHeader_PickDataStorage_v" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="DeliveryNoHeaderVertexSet" Role="FromRole_Asso_DeliveryNoHeader_PickDataStorage_v"/>
+                    <End EntitySet="PickDataStorageSet" Role="ToRole_Asso_DeliveryNoHeader_PickDataStorage_v"/>
+                </AssociationSet>
+                <AssociationSet Name="Asso_BinH_BinToBinSet" Association="ZWM_GW_RFSCREENS_SRV.Asso_BinH_BinToBin" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="BinToBinHSet" Role="FromRole_Asso_BinH_BinToBin"/>
+                    <End EntitySet="BinToBinSet" Role="ToRole_Asso_BinH_BinToBin"/>
+                </AssociationSet>
+                <FunctionImport Name="ReconHUScannedVertix" ReturnType="ZWM_GW_RFSCREENS_SRV.HUValidationVertix" EntitySet="HUValidationVertixCollection" m:HttpMethod="GET" sap:action-for="ZWM_GW_RFSCREENS_SRV.HUValidationVertix">
+                    <Parameter Name="SourceSLoc" Type="Edm.String" Mode="In" MaxLength="4" sap:label="SourceSLoc"/>
+                    <Parameter Name="SourcePlant" Type="Edm.String" Mode="In" MaxLength="4" sap:label="SourcePlant"/>
+                    <Parameter Name="ExternalHU" Type="Edm.String" Mode="In" MaxLength="20" sap:label="External HU no."/>
+                </FunctionImport>
+                <FunctionImport Name="MaterialBatchCheckFor" ReturnType="ZWM_GW_RFSCREENS_SRV.MaterialBatch" EntitySet="MaterialBatchCheck" m:HttpMethod="GET" sap:action-for="ZWM_GW_RFSCREENS_SRV.MaterialBatch">
+                    <Parameter Name="Material" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+                </FunctionImport>
+                <FunctionImport Name="ScannedProductionOrderNo" ReturnType="ZWM_GW_RFSCREENS_SRV.ProductionOrderValidation" EntitySet="ProductionOrderValidationSet" m:HttpMethod="GET" sap:action-for="ZWM_GW_RFSCREENS_SRV.ProductionOrderValidation">
+                    <Parameter Name="ProductionOrder" Type="Edm.String" Mode="In" MaxLength="12" sap:label="Production Order"/>
+                </FunctionImport>
+                <FunctionImport Name="ScannedDeliveryNo" ReturnType="ZWM_GW_RFSCREENS_SRV.DeliveryNoValidation" EntitySet="DeliveryNoValidationSet" m:HttpMethod="GET" sap:action-for="ZWM_GW_RFSCREENS_SRV.DeliveryNoValidation">
+                    <Parameter Name="DeliveryNo" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Delivery Number"/>
+                </FunctionImport>
+                <FunctionImport Name="ScannedBatchNo" ReturnType="ZWM_GW_RFSCREENS_SRV.BatchValidation" EntitySet="BatchValidationSet" m:HttpMethod="GET" sap:action-for="ZWM_GW_RFSCREENS_SRV.BatchValidation">
+                    <Parameter Name="BatchNo" Type="Edm.String" Mode="In" MaxLength="10"/>
+                </FunctionImport>
+                <FunctionImport Name="ScannedMaterial" ReturnType="ZWM_GW_RFSCREENS_SRV.MaterialValidation" EntitySet="MaterialValidationSet" m:HttpMethod="GET" sap:action-for="ZWM_GW_RFSCREENS_SRV.MaterialValidation">
+                    <Parameter Name="Material" Type="Edm.String" Mode="In" MaxLength="40"/>
+                    <Parameter Name="StorLoc" Type="Edm.String" Mode="In" MaxLength="4"/>
+                    <Parameter Name="Plant" Type="Edm.String" Mode="In" MaxLength="4"/>
+                </FunctionImport>
+                <FunctionImport Name="ScannedPhyBatch" ReturnType="ZWM_GW_RFSCREENS_SRV.BatchNoValidation" EntitySet="BatchNoValidationSet" m:HttpMethod="GET" sap:action-for="ZWM_GW_RFSCREENS_SRV.BatchNoValidation">
+                    <Parameter Name="BatchNo" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="StorLoc" Type="Edm.String" Mode="In" MaxLength="4"/>
+                    <Parameter Name="Plant" Type="Edm.String" Mode="In" MaxLength="4"/>
+                    <Parameter Name="Material" Type="Edm.String" Mode="In" MaxLength="40"/>
+                </FunctionImport>
+                <FunctionImport Name="ScannedHUMaterial" ReturnType="ZWM_GW_RFSCREENS_SRV.HUValidation" EntitySet="HUValidationSet" m:HttpMethod="GET" sap:action-for="ZWM_GW_RFSCREENS_SRV.HUValidation">
+                    <Parameter Name="Material" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+                    <Parameter Name="ExternalHU" Type="Edm.String" Mode="In" MaxLength="20" sap:label="External HU no."/>
+                    <Parameter Name="DeliveryItemNum" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Del item no."/>
+                    <Parameter Name="DeliveryNo" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Del no."/>
+                </FunctionImport>
+                <FunctionImport Name="ReconHUScanned" ReturnType="ZWM_GW_RFSCREENS_SRV.HUValidation" EntitySet="HUValidationSet" m:HttpMethod="GET" sap:action-for="ZWM_GW_RFSCREENS_SRV.HUValidation">
+                    <Parameter Name="SourceSLoc" Type="Edm.String" Mode="In" MaxLength="4" sap:label="SourceSLoc"/>
+                    <Parameter Name="SourcePlant" Type="Edm.String" Mode="In" MaxLength="4" sap:label="SourcePlant"/>
+                    <Parameter Name="ExternalHU" Type="Edm.String" Mode="In" MaxLength="20" sap:label="External HU no."/>
+                </FunctionImport>
+                <FunctionImport Name="MaterialDocValidation" ReturnType="ZWM_GW_RFSCREENS_SRV.MatDocValidation" EntitySet="MatDocValidationSet" m:HttpMethod="GET" sap:action-for="ZWM_GW_RFSCREENS_SRV.MatDocValidation">
+                    <Parameter Name="MaterialDocNo" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Material Document"/>
+                </FunctionImport>
+                <FunctionImport Name="ScannedHU" ReturnType="ZWM_GW_RFSCREENS_SRV.HUValidation" EntitySet="HUValidationSet" m:HttpMethod="GET" sap:action-for="ZWM_GW_RFSCREENS_SRV.HUValidation">
+                    <Parameter Name="ExternalHU" Type="Edm.String" Mode="In" MaxLength="20" sap:label="External HU no."/>
+                    <Parameter Name="Warehouse" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Warehouse no."/>
+                </FunctionImport>
+                <FunctionImport Name="ScannedBinNumber" ReturnType="ZWM_GW_RFSCREENS_SRV.BinNoValidation" EntitySet="BinNoValidationSet" m:HttpMethod="GET" sap:action-for="ZWM_GW_RFSCREENS_SRV.BinNoValidation">
+                    <Parameter Name="BinNumber" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Storage Bin"/>
+                </FunctionImport>
+                <FunctionImport Name="ScannedPO" ReturnType="ZWM_GW_RFSCREENS_SRV.POValidation" EntitySet="POValidationSet" m:HttpMethod="GET" sap:action-for="ZWM_GW_RFSCREENS_SRV.POValidation">
+                    <Parameter Name="PoNumber" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Po Number"/>
+                </FunctionImport>
+                <FunctionImport Name="ScannedLabelTest" ReturnType="ZWM_GW_RFSCREENS_SRV.LabelValidation" EntitySet="LabelValidationSet" m:HttpMethod="GET" sap:action-for="ZWM_GW_RFSCREENS_SRV.LabelValidation">
+                    <Parameter Name="BatchNo" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="Material" Type="Edm.String" Mode="In" MaxLength="40"/>
+                    <Parameter Name="ProductionOrderNo" Type="Edm.String" Mode="In" MaxLength="12"/>
+                </FunctionImport>
+                <FunctionImport Name="ScannedRMPickBatch" ReturnType="ZWM_GW_RFSCREENS_SRV.RMPickBatchValidation" EntitySet="RMPickBatchValidationSet" m:HttpMethod="GET" sap:action-for="ZWM_GW_RFSCREENS_SRV.RMPickBatchValidation">
+                    <Parameter Name="BatchNo" Type="Edm.String" Mode="In" MaxLength="10"/>
+                </FunctionImport>
+                <FunctionImport Name="ScannedDoorNo" ReturnType="ZWM_GW_RFSCREENS_SRV.DoorNo" EntitySet="DoorNoSet" m:HttpMethod="GET" sap:action-for="ZWM_GW_RFSCREENS_SRV.DoorNo">
+                    <Parameter Name="DoorNo" Type="Edm.String" Mode="In" MaxLength="3" sap:label="Door No"/>
+                </FunctionImport>
+                <FunctionImport Name="ScannedBinPlant" ReturnType="ZWM_GW_RFSCREENS_SRV.BinNoValidation" EntitySet="BinNoValidationSet" m:HttpMethod="GET" sap:action-for="ZWM_GW_RFSCREENS_SRV.BinNoValidation">
+                    <Parameter Name="BinNumber" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Storage Bin"/>
+                    <Parameter Name="StorLoc" Type="Edm.String" Mode="In" MaxLength="4"/>
+                    <Parameter Name="Plant" Type="Edm.String" Mode="In" MaxLength="4"/>
+                </FunctionImport>
+                <FunctionImport Name="BinTOBinHUScanned" ReturnType="ZWM_GW_RFSCREENS_SRV.HUValidation" EntitySet="HUValidationSet" m:HttpMethod="GET" sap:action-for="ZWM_GW_RFSCREENS_SRV.HUValidation">
+                    <Parameter Name="ExternalHU" Type="Edm.String" Mode="In" MaxLength="20" sap:label="External HU no."/>
+                </FunctionImport>
+                <FunctionImport Name="FGPutawayBinValidation" ReturnType="ZWM_GW_RFSCREENS_SRV.BinNoValidation" EntitySet="BinNoValidationSet" m:HttpMethod="GET" sap:action-for="ZWM_GW_RFSCREENS_SRV.BinNoValidation">
+                    <Parameter Name="BinNumber" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Storage Bin"/>
+                </FunctionImport>
+                <FunctionImport Name="RMBTBBatchNo" ReturnType="ZWM_GW_RFSCREENS_SRV.BatchValidation" EntitySet="BatchValidationSet" m:HttpMethod="GET" sap:action-for="ZWM_GW_RFSCREENS_SRV.BatchValidation">
+                    <Parameter Name="BatchNo" Type="Edm.String" Mode="In" MaxLength="10"/>
+                </FunctionImport>
+                <FunctionImport Name="ReconPlantValidation" ReturnType="ZWM_GW_RFSCREENS_SRV.ReconValidation" EntitySet="ReconValidationSet" m:HttpMethod="GET" sap:action-for="ZWM_GW_RFSCREENS_SRV.ReconValidation">
+                    <Parameter Name="Plant" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Plant"/>
+                </FunctionImport>
+                <FunctionImport Name="ReconSlocValidation" ReturnType="ZWM_GW_RFSCREENS_SRV.ReconValidation" EntitySet="ReconValidationSet" m:HttpMethod="GET" sap:action-for="ZWM_GW_RFSCREENS_SRV.ReconValidation">
+                    <Parameter Name="Sloc" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Sloc"/>
+                    <Parameter Name="Plant" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Plant"/>
+                </FunctionImport>
+                <FunctionImport Name="WarehouseValidation" ReturnType="ZWM_GW_RFSCREENS_SRV.WarehouseValidation" EntitySet="WarehouseValidationSet" m:HttpMethod="GET" sap:action-for="ZWM_GW_RFSCREENS_SRV.WarehouseValidation">
+                    <Parameter Name="WarehouseNo" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Plant"/>
+                </FunctionImport>
+                <FunctionImport Name="MaterialDocHUValidation" ReturnType="ZWM_GW_RFSCREENS_SRV.MatDocHUValidation" EntitySet="MatDocHUValidationCollection" m:HttpMethod="GET" sap:action-for="ZWM_GW_RFSCREENS_SRV.MatDocHUValidation">
+                    <Parameter Name="ExternalHU" Type="Edm.String" Mode="In" MaxLength="20" sap:label="External HU no."/>
+                    <Parameter Name="MaterialDocNo" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Material Document"/>
+                </FunctionImport>
+                <FunctionImport Name="ScannedMaterialVertix" ReturnType="ZWM_GW_RFSCREENS_SRV.HUValidation" EntitySet="HUValidationSet" m:HttpMethod="GET" sap:action-for="ZWM_GW_RFSCREENS_SRV.HUValidation">
+                    <Parameter Name="APP" Type="Edm.String" Mode="In" MaxLength="20" sap:label="App"/>
+                    <Parameter Name="Material" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+                    <Parameter Name="ExternalHU" Type="Edm.String" Mode="In" MaxLength="20" sap:label="External HU no."/>
+                    <Parameter Name="DeliveryItemNum" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Del item no."/>
+                    <Parameter Name="DeliveryNo" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Del no."/>
+                </FunctionImport>
+                <FunctionImport Name="ScannedBatchvertix" ReturnType="ZWM_GW_RFSCREENS_SRV.BatchValidation" EntitySet="BatchValidationSet" m:HttpMethod="GET" sap:action-for="ZWM_GW_RFSCREENS_SRV.BatchValidation">
+                    <Parameter Name="BatchNo" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="APP" Type="Edm.String" Mode="In" MaxLength="10"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="ZWM_GW_RFSCREENS_SRV.ZWM_GW_RFSCREENS_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <atom:link rel="self" href="/sap/opu/odata/sap/ZWM_GW_RFSCREENS_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="/sap/opu/odata/sap/ZWM_GW_RFSCREENS_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

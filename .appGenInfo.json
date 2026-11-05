@@ -1,0 +1,15 @@
+{
+  "generationParameters": {
+    "appName": "com.axium.Axium",
+    "appTitle": "{{appTitle}}",
+    "appNamespace": "com.axium",
+    "appDescription": "This application was downloaded from an SAP ABAP repository.",
+    "ui5Theme": "sap_fiori_3",
+    "generatorName": "@sap-ux/repo-app-import-sub-generator",
+    "generatorVersion": "1.30.0",
+    "ui5Version": "1.30.0",
+    "template": "unknown",
+    "serviceUrl": "http://ssdclnt200wd:44200",
+    "launchText": "To launch the generated application, run the following command from the generated app root folder:\n\n```\n    npm start\n```"
+  }
+}
