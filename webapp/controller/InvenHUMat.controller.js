@@ -709,7 +709,19 @@ sap.ui.define([
 					var msg = '';
 					if(response.response.body !== undefined && response.response.body !== ''){
 						var error = JSON.parse(response.response.body);
-						var msg = error.error.innererror.errordetails[0].message;
+						var msg = "";
+						if(error.error.innererror.errordetails !== undefined && error.error.innererror.errordetails.length > 1) {
+							for(var i=0; i<error.error.innererror.errordetails.length; i++){
+								if(i === 0){
+									msg = error.error.innererror.errordetails[0].message;
+								} else {
+									msg = msg + " , " + error.error.innererror.errordetails[i].message;
+								}
+							}
+						} else if (error.error.innererror.errordetails !== undefined && error.error.innererror.errordetails.length === 1) {
+							msg = error.error.innererror.errordetails[0].message;
+						}
+						
 						// var msg = response.error.error.innererror.errordetails;
 						// MessageBox.information(msg, {
 						MessageBox.error(msg, {
