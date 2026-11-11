@@ -38,9 +38,9 @@
 							iconFirst="true" type="Emphasized" press="onQRPhysicalInventory" icon="sap-icon://bar-code"/>
 						<Button text="Stock Transfer" class="sapMBtnContent" iconDensityAware="false" visible="true" enabled="true" width="325px" iconFirst="true"
 							type="Emphasized" press="onInventoryPress" icon="sap-icon://bar-code"/>
-						<Button text="WH Transfer Receipt" class="sapMBtnContent" iconDensityAware="false" visible="true" enabled="true" width="325px"
+						<Button text="FG Stock Transfer Receipt" class="sapMBtnContent" iconDensityAware="false" visible="true" enabled="true" width="325px"
 							iconFirst="true" type="Emphasized" press="onWHTransferReceipt" icon="sap-icon://bar-code"/>
-						<Button text="Stock Transfer Receipt" class="sapMBtnContent" iconDensityAware="false" visible="true" enabled="true" width="325px"
+						<Button text="RM Stock Transfer Receipt" class="sapMBtnContent" iconDensityAware="false" visible="true" enabled="true" width="325px"
 							iconFirst="true" type="Emphasized" press="onStockTransferReceipt" icon="sap-icon://bar-code"/>
 						<Button text="Hold/Release HU" class="sapMBtnContent" iconDensityAware="false" visible="true" enabled="true" width="325px" iconFirst="true"
 							type="Emphasized" press="onOpenDialog" icon="sap-icon://bar-code"/>

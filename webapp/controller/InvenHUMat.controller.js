@@ -728,15 +728,15 @@ sap.ui.define([
 							title: "Error",
 							Action: "Close",
 							onClose: function (oAction) {
-								if (oAction === "OK") {
-									// var sHistory = History.getInstance();
-									// var sPreviousHash = sHistory.getPreviousHash();
-									// if (sPreviousHash !== undefined) {
+								if (oAction === "CLOSE") {
+									var sHistory = History.getInstance();
+									var sPreviousHash = sHistory.getPreviousHash();
+									if (sPreviousHash !== undefined) {
 									//	oRef.getView().byId("binId").setValue("");
 									//	oRef.getView().byId("idHUMatCount").setValue("0");
-									//	window.history.go(-1);
-									//	oRef.onPressBack();
-									// }
+										window.history.go(-1);
+										oRef.onPressBack();
+									}
 								}
 							}.bind(oRef),
 							//	}
